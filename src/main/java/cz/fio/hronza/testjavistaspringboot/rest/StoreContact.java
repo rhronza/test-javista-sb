@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.io.IOException;
 
 @Validated
 @RestController
@@ -23,7 +24,7 @@ public class StoreContact {
     }
 
     @GetMapping(value = "/contact", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void storeContact(@RequestParam(value = "firstName") @NotNull String firstName, @RequestParam(value = "lastName") @NotNull String lastname, @RequestParam(value = "email") @NotNull @Email String email) {
+    public void storeContact(@RequestParam(value = "firstName") @NotNull String firstName, @RequestParam(value = "lastName") @NotNull String lastname, @RequestParam(value = "email") @NotNull @Email String email) throws IOException {
         storeContactService.storeContact(firstName, lastname, email);
     }
 }
